@@ -12,10 +12,10 @@
   // h - start timelapse
   // i - Slew a set angle forward
   // j - Slew a set angle backwards
-  // * -
-  // # -
-  // s -
-  // $ - 
+  // * - Set timelapse degrees, *X where X is the number of degrees and it can be any integer
+  // # - Set timelapse # of steps, #X where X is number of steps in the timeplapse and it can be any integer
+  // s - Sets the time at each step, sX where x is the number of seconds at the step, it can be any integer
+  // $ - set camera brand but not yet working, camera type is defined in the setup for the multicameraIR library so need to figure out how to redefine camera
   //--------------------------------------------------------------------------------------------------- 
     #include <Arduino.h>
     #include <AccelStepper.h>
@@ -336,7 +336,7 @@ class MyCallbacks: public BLECharacteristicCallbacks {
       stepper.setSpeed(trackspeed);
       stepper.setPinsInverted(true, false, false);
 
-    // tmcStpper driver settings
+    // tmcStpper driver settings - At low speed coolstep and stallguard are not usable
     driver.begin();
     driver.toff(4);
     //driver.blank_time(24);
